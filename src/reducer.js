@@ -1,10 +1,24 @@
 import { combineReducers } from 'redux'
 
 
-const todo=(state = ['a', 'b'], action) => {
+
+const INITIAL_STATE = {
+    todo: ['a', 'b'],
+}
+
+const todo=(state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'INCREMENT_COUNTER':
-            return [...state, 'c']
+            return {
+                ...state,
+                todo: [...state.todo, action.payload]
+            }
+        case 'DELETE_TODO':
+            return {
+                ...state,
+                todo: state.todo.splice(0,action.payload)
+
+            }
         default:
             return state
     }

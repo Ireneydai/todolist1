@@ -1,25 +1,19 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Item from './Item.js'
 
 class List extends Component {
     render() {
-        const {increment, todo } = this.props;
-    
         return (
-            <ul>
-                {todo.map((item)=>
-                <Item todo={todo} />
+            <div>
+                
+                {this.props.text.todo.map((item, index)=>
+                <Item todo={item} key = {index} index = {index} onDelete={(index)=>this.props.onDelete(index)}/>
                 )}
-                {/* <input 
-                    ref={(input) => { this.textInput = input; }}
-                    type='text'   
-                    placeholder='(type something)'
-                /> */}
-                 <button onClick={increment(this.refs.text)}>+</button>
-            
-            </ul>
+
+
+            </div>
         )
     }
 }
 
-export default List
+export default List;

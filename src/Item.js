@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Item = props => (
-    <p>
+    <div>
         {props.todo}
-        {' '}
-    </p>
+        <button onClick = {()=> props.onDelete(props.index)}>x</button>
+    </div>
 
 );
 
